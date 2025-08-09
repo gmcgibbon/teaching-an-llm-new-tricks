@@ -1,0 +1,14 @@
+{
+  // 💡 Inputs are prompted on first server start, then stored securely by VS Code.
+  "inputs": [],
+  "servers": {
+    "Example App (HTTP)": {
+      "url": "http://localhost:9292/mcp/sse",
+    },
+    "Example App (STDIO)": {
+      "type": "stdio",
+      "command": "example/bin/stdio",
+      "args": []
+    }
+  }
+}

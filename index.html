@@ -1,0 +1,774 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Teaching an LLM New Tricks</title>
+    <meta charset="utf-8">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/theme/dracula.css">
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.10.0/styles/github-dark.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "mermaid": "https://unpkg.com/mermaid@11.4.1/dist/mermaid.esm.min.mjs",
+          "reveal.js": "https://unpkg.com/reveal.js@5.1.0/dist/reveal.esm.js",
+          "reveal.js-mermaid-plugin": "./mermaid-plugin.js",
+          "reveal.js-laser-pointer-plugin": "./laser-pointer-plugin.js",
+          "reveal.js-markdown-plugin": "https://unpkg.com/reveal.js@5.1.0/plugin/markdown/markdown.esm.js",
+          "reveal.js-highlight-plugin": "https://unpkg.com/reveal.js@5.1.0/plugin/highlight/highlight.esm.js",
+          "reveal.js-notes-plugin": "https://unpkg.com/reveal.js@5.1.0/plugin/notes/notes.esm.js"
+        }
+      }
+    </script>
+  </head>
+  <style>
+    svg {
+      max-width: none !important;
+      line-height: 150%;
+      -webkit-text-stroke-width: 0.01px;
+    }
+
+    h2 {
+      margin-bottom: 50px !important;
+    }
+
+    img[alt="Gannon"] {
+      width: 40%;
+      float: left;
+    }
+
+    img[alt="Out of touch"] {
+      width: 60%;
+    }
+
+    img[alt="LLM using MCP but Wrong"],
+    img[alt="Developer and AI High Fiving"],
+    img[alt="Developers Talking"],
+    img[alt="Developer Thinking"] {
+      width: 75%;
+    }
+
+    img[alt="Siri"] {
+      width: 60%;
+    }
+
+    img[alt="Chatbot"] {
+      width: 50%;
+    }
+
+    img[alt="ChatGPT Website"] {
+      width: 70%;
+    }
+
+    img[alt="VS Code AI Prompt"] {
+      width: 35%;
+    }
+
+    img[alt="VS Code Agent Select"] {
+      width: 35%;
+    }
+
+    img[alt="Model Context Protocol Logo"] {
+      width: 30%;
+    }
+
+    img[alt="MCP SDKs"] {
+      width: 80%;
+    }
+
+    svg#mermaid-3, svg#mermaid-4 {
+      width: 60%;
+    }
+  </style>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-markdown>
+          <textarea data-template>
+            # Teaching an LLM New Tricks
+
+            #### [Gannon McGibbon](https://gannon.io/)
+
+            Note:
+            - For WRUG August 2025
+            ---
+            ## 👋 Hi, I'm Gannon
+
+            ![Gannon](images/me.jpg)
+
+            - Works at Shopify
+            - Committer on Ruby on Rails
+            - Organizes Winnipeg.rb
+
+            Note:
+            - Intro
+            ---
+            ## LLMs?
+
+            ![Developer Thinking](images/developer-thinking.png)
+
+            Note:
+            - How many of you know what an LLM is?
+            - How many of you have used one?
+            - How many of you have use them daily?
+            ---
+            ## AI is Everywhere
+
+            # 🌎
+
+            Note:
+            - AI is everywhere these days
+            - It has seeped into my day-to-day work
+            - We see new AI startups and products every day
+            ---
+            ## AI is Everywhere
+
+            ![LLM using MCP but Wrong](images/fail.png)
+
+            Note:
+            - I used it to help write this presentation
+            - And to ocasionally provide visuals
+            - And I have mixed feelings
+            ---
+            ## AI is Everywhere
+
+            ![LLM using MCP but Wrong](images/fail.png)
+
+            Note:
+            - I see the value of it
+            - It can do amazing things
+            - But I worry about how it is being used
+            ---
+            ## The future we wanted
+
+            - Automation of repetitive tasks
+            - Code autocompletion
+            - A reliable source of information
+
+            Note:
+            - This is the AI future that excited me
+            - Automation of repetitive tasks
+            - Code autocompletion
+            - A reliable source of information
+            ---
+            ## The future we got
+
+            - Vibe coding
+            - Intern level code competence
+            - AI-generated hallucinations
+
+            Note:
+            - But what we have today is different
+            - Vibe coding
+            - Intern level autocomplete and code reviews
+            - AI-generated hallucinations
+            ---
+            ## What people say
+
+            ![Developers Talking](images/developers-talking.png)
+
+            Note:
+            - I've heard a lot of people say negative things about AI
+            - It makes you dumber
+            - It makes developers slower
+            - It is bad for the environment
+            ---
+            ## What people say
+
+            ![Developers Talking](images/developers-talking.png)
+
+            Note:
+            - This all sounds prtty bad
+            - But is it true?
+            ---
+            ## What studies say
+
+            ![Your Brain on Chat GPT](images/your-brain-on-chat-gpt.png)
+
+            Note:
+            - A study from MIT found
+            - ChatGPT can impact critical thinking
+            ---
+            ## What studies say
+
+            ![Measuring the Impact of AI Tools 2025](images/measuring-the-impact-of-early-2025-ai.png)
+
+            Note:
+            - Another study from MIT found
+            - The AI tools developers use today
+            - Make us slower, not faster
+            ---
+            ## What studies say
+
+            ![AI Datacenters Causing Distortions](images/ai-data-centers-causing-distortions.png)
+
+            Note:
+            - An article from Bloomberg found
+            - AI data centers are causing problems
+            - In the US power grid
+            ---
+
+            ![Out of touch](images/out-of-touch.jpg)
+
+            Note:
+            - Am I being too negative?
+            - I'm sure we used to feel this way about calculators
+            - Or autocorrect on smart phones
+            ---
+
+            ![Out of touch](images/out-of-touch.jpg)
+
+            Note:
+            - Maybe I'm just out of touch
+            - It is easy to focus on the negatives
+            - But there are positives too
+            ---
+            ## AI Assistants
+
+            ![Siri](images/siri-iphone.jpg)
+
+            Note:
+            - Big tech companies all offer AI assistants
+            - If you can get past spying
+            - They're useful for timers, weather, etc.
+            ---
+            ## AI Assistants
+
+            ![Siri](images/siri-iphone.jpg)
+
+            Note:
+            - Apple has Siri
+            - But all big tech companies have one
+            ---
+            ## Reading and Writing
+
+            ![Text Summarization](images/text-summary.png)
+
+            Note:
+            - LLMs are pretty good at reading and writing
+            - Many people use it to summarize text or write about a prompt
+            - Though you can often tell if text is AI generated
+            ---
+            ## Reading and Writing
+
+            ![Text Summarization](images/text-summary.png)
+
+            Note:
+            - Here I'm asking it to summarize the Ruby Wikipedia page
+            - It seems to do a good job
+            ---
+            ## Search
+
+            ![Chatbot](images/chatbot.png)
+
+            Note:
+            - LLMs are also pretty good at search
+            - They can use Retreival Augmented Generation
+            - To train on specific data sources
+            ---
+            ## Search
+
+            ![Chatbot](images/chatbot.png)
+
+            Note:
+            - I don't have a lot of experience with chatbots
+            - But Intercom's chatbot is pretty good
+            - I asked it how to make API calls with Ruby
+            - It pointed me to the Rails gem and not the Ruby gem
+            - But it was still helpful
+            ---
+            ## Coding
+
+            ![Cursor](images/cursor.png)
+
+            Note:
+            - I've criticized it a lot, but
+            - Editors like Cursor are interesting
+            - You can tell an LLM to do your job for you
+            - But it probably won't do it well
+            ---
+            ## Coding
+
+            ![Cursor](images/cursor.png)
+
+            Note:
+            - Other editors are catching up
+            - VS Code has Copilot
+            - JetBrains has Junie
+            ---
+            ## What is an LLM?
+
+            A Large Language Model (LLM) is a type of AI that uses deep learning to understand and generate human language.
+
+            Note:
+            - Let's take a step back
+            - LLMs make all of this possible
+            - LLMs are AI models that understand and generate language
+            - They are trained on large corpuses of text
+            ---
+            ## What is an LLM?
+
+            - ChatGPT
+            - Claude
+            - Gemini
+
+            Note:
+            - Some examples of LLMs are
+            - ChatGPT from Open AI
+            - Claude from Anthropic
+            - Gemini from Google
+            ---
+            ## The LLM Client
+
+            ![ChatGPT Website](images/chatgpt-web.png)
+
+            Note:
+            - We usually use some kind of client
+            - To interact with an LLM
+            - This can be a webpage, mobile app, your editor, etc.
+            ---
+            ## The LLM Client
+
+            ![ChatGPT Website](images/chatgpt-web.png)
+
+            Note:
+            - One that we're all familiar with
+            - Is the ChatGPT website
+            - It provides a front end with a chat interface
+            ---
+            ## The LLM Client
+
+            ![VS Code AI Prompt](images/vs-code-ai-prompt.png)
+
+            Note:
+            - I mentioned it eatlier
+            - VS Code also has an LLM client built in
+            - We'll use this going forward
+            - Let's look at how it works under the hood
+            ---
+            ## The LLM Client
+
+            ```mermaid
+            graph LR
+              Developer -- Chats --> Client
+              Client -- Queries --> LLM
+              LLM -- Responds --> Client
+            ```
+
+            Note:
+            - It takes a query
+            - Sends it to the LLM
+            - And returns the response
+            - Pretty simple
+            ---
+            ## The LLM Client
+
+            ![VS Code Agent Select](images/vs-code-agent-select.png)
+
+            Note:
+            - This often also means you can choose the LLM to query
+            - LLMs are often referred to as Agents
+            - But they are just a target LLM version
+            - Like Calude 3.5 or ChatGPT 4
+            ---
+            ## The LLM Client
+
+            ![VS Code Chat Select](images/vs-code-chat-select.png)
+
+            Note:
+            - It can also manage conversations
+            - Which allows you talk to multiple models
+            - And keep the context in threads
+            ---
+            ## New Skills
+
+            ![VS Code AI Prompt](images/vs-code-ai-prompt.png)
+
+            Note:
+            - We know roughly how clients talk to LLMs
+            - How do we teach them new skills?
+            ---
+            ## New Skills
+
+            ![VS Code AI Prompt](images/vs-code-ai-prompt.png)
+
+            Note:
+            - Alexa can play music from Spotify
+            - Siri can search the web
+            - Can I teach ChatGPT to talk to a Rails Application?
+            ---
+            ## Model Context Protocol (MCP)
+
+            ![Model Context Protocol Logo](images/mcp.svg)
+
+            Note:
+            - Yes, you can
+            - And that's what I'd like to talk about today
+            - Model Context Protocol (MCP) provides a standard way
+            - For LLM clients to extend the capabilities of LLMs
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```mermaid
+            graph LR
+              Developer -- Chats --> Client
+              Client <-- Registers --> MCPServer
+              Client -- Queries --> LLM
+              Client -- Queries --> MCPServer
+              LLM -- Responds --> Client
+              MCPServer -- Responds --> Client
+            ```
+
+            Note:
+            - It works like this
+            - The Developer talks to the client
+            - The Client uses MCP to talk to multiple servers
+            - The Client also queries the LLM
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```mermaid
+            sequenceDiagram
+              Client ->> Server: Initialize Request
+              activate Server
+              Server -->> Client: Initialize Response
+              Client -->> Server: Initialized Notification
+              deactivate Server
+            ```
+
+            Note:
+            - When the Client connects to a server
+            - The connection starts with a handshake
+            - That looks like this
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "initialize",
+              "params": {
+                "protocolVersion": "2025-06-18",
+                "capabilities": {
+                  "sampling": {},
+                },
+                "clientInfo": {
+                  "name": "client", "title": "Client", "version": "0.0.1"
+                }
+              }
+            }
+            ```
+
+            Note:
+            - Requests, responses, and notifications
+            - Are all sent as JSON RPC
+            - This is what the initialize request looks like
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "result": {
+                "protocolVersion": "2025-06-18",
+                "capabilities": {
+                  "tools": { "listChanged": true }
+                },
+                "serverInfo": {
+                  "name": "server", "title": "Server", "version": "0.0.1"
+                }
+              }
+            }
+            ```
+
+            Note:
+            - The initialize response looks similar
+            - It tells the client what capabilities the server has
+            - And what version of the protocol it supports
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "method": "notifications/initialized"
+            }
+            ```
+
+            Note:
+            - Notifications looks like this
+            - And are sent through HTTP streaming
+            - Which is basically a long-lived HTTP request
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "method": "notifications/initialized"
+            }
+            ```
+
+            Note:
+            - When the initialized notification is received
+            - The handshsake is done
+            - The client and server can now communicate
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 1,
+              "method": "tools/list",
+              "params": {}
+            }
+            ```
+
+            Note:
+            - The client then might ask the server
+            - For a list of tools it has access to
+            - Tools are basically remote functions
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "result": {
+                "tools": [
+                  {
+                    "name": "test", "description": "Test", "inputSchema": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string", "description": "Name"}
+                      },
+                      "required": ["name"]
+                    }
+                  }
+                ]
+              }
+            }
+            ```
+
+            Note:
+            - The server responds with a list of tools
+            - Here we have a test tool
+            - With a name parameter
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "method": "tools/call",
+              "params": { "name":"test", "arguments": { "name":"Gannon" } }
+            }
+            ```
+
+            Note:
+            - The client can then call a tool
+            - By sending a tools/call request
+            - With the name of the tool and arguments
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "jsonrpc": "2.0",
+              "id": 2,
+              "result": {
+                "content": [{
+                  "type": "text",
+                  "text": "Hello from MCP, {name: \"Gannon\"}"
+                }],
+                "isError": false
+              }
+            }
+            ```
+
+            Note:
+            - The server responds with a result with content
+            - The content is the return from the tool
+            ---
+            ## Model Context Protocol (MCP)
+
+            - Tools
+            - Resources
+            - Prompts
+
+            Note:
+            - Tools are just one server capability
+            - There's also prompts and resources
+            - Resources are files the server makes available to the client
+            - Prompts are basically named templated queries
+            ---
+            ## Model Context Protocol (MCP)
+
+            - Roots
+            - Sampling
+            - Elicitation
+
+            Note:
+            - Clients also have capabilities too
+            - I'm focusing more on the server side
+            - So you can read more about these in the MCP spec
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```mermaid
+            sequenceDiagram
+              activate Server
+              Client -->> Server: Disconnect
+              deactivate Server
+            ```
+
+            Note:
+            - When the client no longer wishes to use the server
+            - It can simply close the connection
+            - No disconnect request is needed
+            ---
+            ## Model Context Protocol (MCP)
+
+            - HTTP
+            - STDIO
+
+            Note:
+            - HTTP is just a transport method
+            - You can also use MCP servers through STDIO
+            - Anything that you can send and receive JSON through
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "model": "gpt-5",
+              "input": "Use the test tool."
+              "tools": [{
+                "type": "function",
+                "name": "test",
+                "description": "Test",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                      "location": {
+                          "type": "string",
+                          "description": "Name"
+                      },
+                  },
+                  "required": ["name"],
+                  "additionalProperties": false
+                },
+                "strict": true
+              }]
+            }
+            ```
+
+            Note:
+            - When the client queries the LLM
+            - It includes a list of tools it has access to
+            - The LLM can the ndecide which to use
+            ---
+            ## Demo
+
+            Note:
+            - Demo building a basic MCP server with VSCode and Ruby
+            ---
+            ## API Clients
+
+            ![MCP SDKs](images/sdks.png)
+
+            Note:
+            - Not all of us are Rubyists
+            - There's a standard set of SDKs
+            - Ruby's SDK isn't quite production ready, but other clients likely are
+            ---
+            ## Be Careful
+
+            ![Developer and AI High Fiving](images/high-five.png)
+
+            Note:
+            - LLMs are really cool
+            - But they are a developing technology
+            - Error prone
+            - You shouldn't trust them to do the right thing
+            ---
+            ## Be Careful
+
+            ![Developer and AI High Fiving](images/high-five.png)
+
+            Note:
+            - They're getting better
+            - They show a lot of promise
+            - They might just take our jobs
+            - But not anytime soon IMO
+            ---
+            ## Be Careful
+
+            ![Developer and AI High Fiving](images/high-five.png)
+
+            Note:
+            - I've heard a sentiment that I agree with
+            - LLMs are like interns
+            - They can do basic work
+            ---
+            ## Be Careful
+
+            ![Developer and AI High Fiving](images/high-five.png)
+
+            Note:
+            - You need to hold their hand a lot
+            - They get a lot of things wrong
+            - But they also might surpise you
+            ---
+            ## Thanks!
+            ---
+            ## Resources
+            - https://modelcontextprotocol.io/
+            - https://platform.openai.com/docs/overview
+            - https://github.com/modelcontextprotocol/ruby-sdk
+            - https://github.com/yjacquin/fast-mcp
+          </textarea>
+        </section>
+      </div>
+    </div>
+    <script type="module">
+      import Reveal from 'reveal.js'
+      import Markdown from 'reveal.js-markdown-plugin'
+      import Mermaid from 'reveal.js-mermaid-plugin'
+      import LaserPointer from 'reveal.js-laser-pointer-plugin'
+      import Highlight from 'reveal.js-highlight-plugin'
+      import Notes from 'reveal.js-notes-plugin'
+
+      const deck = new Reveal({
+        plugins: [
+          Markdown,
+          Mermaid,
+          Highlight,
+          LaserPointer,
+          Notes,
+        ]
+      })
+      deck.initialize({
+        autoPlayMedia: true,
+        transition: 'none',
+        center: false,
+        controls: false,
+        hash: true,
+        controlsBackArrows: 'hidden',
+        mermaid: {
+          theme: 'dark',
+          themeVariables: {
+            signalTextColor: '',
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

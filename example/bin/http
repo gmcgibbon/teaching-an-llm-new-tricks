@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+root = File.join(__dir__, "..")
+
+Dir.chdir(root) do
+  system("bin/rackup")
+end
