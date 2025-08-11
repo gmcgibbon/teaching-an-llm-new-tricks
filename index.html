@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://unpkg.com/reveal.js@5.1.0/dist/theme/dracula.css">
     <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.10.0/styles/github-dark.css">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&display=swap" rel="stylesheet">
+
     <script type="importmap">
       {
         "imports": {
@@ -24,6 +27,12 @@
     </script>
   </head>
   <style>
+    :root {
+      --r-main-font: "Mozilla Text", sans-serif;
+      --r-heading-font: "Mozilla Text", sans-serif;
+      --r-heading-font-weight: bold;
+    }
+
     svg {
       max-width: none !important;
       line-height: 150%;
@@ -35,7 +44,7 @@
     }
 
     img[alt="Gannon"] {
-      width: 40%;
+      width: 35%;
       float: left;
     }
 
@@ -676,6 +685,8 @@
             - The LLM can the ndecide which to use
             ---
             ## Demo
+
+            (see example folder)
 
             Note:
             - Demo building a basic MCP server with VSCode and Ruby
