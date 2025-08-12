@@ -87,8 +87,16 @@
       width: 80%;
     }
 
-    svg#mermaid-3, svg#mermaid-4 {
+    svg#mermaid-3 {
       width: 60%;
+    }
+
+    svg#mermaid-4 {
+      width: 90%;
+    }
+
+    svg#mermaid-5 {
+      width: 90%;
     }
   </style>
   <body>
@@ -114,7 +122,7 @@
             Note:
             - Intro
             ---
-            ## LLMs?
+            ## LLM?
 
             ![Developer Thinking](images/developer-thinking.png)
 
@@ -123,14 +131,34 @@
             - How many of you have used one?
             - How many of you have use them daily?
             ---
+            ## What is an LLM?
+
+            A Large Language Model (LLM) is a type of AI that uses deep learning to understand and generate human language.
+
+            Note:
+            - Large Language Models are a kind of Artifical Intelligence
+            - that understands and generates human language
+            ---
+            ## What is an LLM?
+
+            - ChatGPT
+            - Claude
+            - Gemini
+
+            Note:
+            - Some examples of LLMs are
+            - ChatGPT from OpenAI
+            - Claude from Anthropic
+            - Gemini from Google
+            ---
             ## AI is Everywhere
 
             # 🌎
 
             Note:
-            - AI is everywhere these days
+            - LLMs are everywhere these days
             - It has seeped into my day-to-day work
-            - We see new AI startups and products every day
+            - I have mixed feelings
             ---
             ## AI is Everywhere
 
@@ -139,7 +167,7 @@
             Note:
             - I used it to help write this presentation
             - And to ocasionally provide visuals
-            - And I have mixed feelings
+            - Some better than others
             ---
             ## AI is Everywhere
 
@@ -150,19 +178,19 @@
             - It can do amazing things
             - But I worry about how it is being used
             ---
-            ## The future we wanted
+            ## The future I wanted
 
             - Automation of repetitive tasks
             - Code autocompletion
-            - A reliable source of information
+            - A competent pair programmer
 
             Note:
-            - This is the AI future that excited me
-            - Automation of repetitive tasks
+            - I thought AI could solve job pain points
+            - Automate repetitive tasks
             - Code autocompletion
-            - A reliable source of information
+            - A knowledgable pair programmer
             ---
-            ## The future we got
+            ## The future I got
 
             - Vibe coding
             - Intern level code competence
@@ -181,7 +209,7 @@
             Note:
             - I've heard a lot of people say negative things about AI
             - It makes you dumber
-            - It makes developers slower
+            - It makes development slower
             - It is bad for the environment
             ---
             ## What people say
@@ -189,7 +217,7 @@
             ![Developers Talking](images/developers-talking.png)
 
             Note:
-            - This all sounds prtty bad
+            - This all sounds pretty bad
             - But is it true?
             ---
             ## What studies say
@@ -199,6 +227,7 @@
             Note:
             - A study from MIT found
             - ChatGPT can impact critical thinking
+            - At least in the context of essay writing
             ---
             ## What studies say
 
@@ -222,9 +251,10 @@
             ![Out of touch](images/out-of-touch.jpg)
 
             Note:
-            - Am I being too negative?
+            - I might be being too negative
             - I'm sure we used to feel this way about calculators
-            - Or autocorrect on smart phones
+            - Or spell check
+            - Or even bitcoin
             ---
 
             ![Out of touch](images/out-of-touch.jpg)
@@ -249,15 +279,16 @@
 
             Note:
             - Apple has Siri
-            - But all big tech companies have one
+            - But there are other offerings too
+            - As you probably know
             ---
             ## Reading and Writing
 
             ![Text Summarization](images/text-summary.png)
 
             Note:
-            - LLMs are pretty good at reading and writing
-            - Many people use it to summarize text or write about a prompt
+            - Modern LLMs are pretty good at reading/writing
+            - Many people use it to summarize text or write for them
             - Though you can often tell if text is AI generated
             ---
             ## Reading and Writing
@@ -275,7 +306,7 @@
             Note:
             - LLMs are also pretty good at search
             - They can use Retreival Augmented Generation
-            - To train on specific data sources
+            - To learn about specific data sources
             ---
             ## Search
 
@@ -285,7 +316,14 @@
             - I don't have a lot of experience with chatbots
             - But Intercom's chatbot is pretty good
             - I asked it how to make API calls with Ruby
-            - It pointed me to the Rails gem and not the Ruby gem
+            ---
+            ## Search
+
+            ![Chatbot](images/chatbot.png)
+
+            Note:
+            - It pointed me to the Rails gem
+            - Not the Ruby gem
             - But it was still helpful
             ---
             ## Coding
@@ -293,10 +331,10 @@
             ![Cursor](images/cursor.png)
 
             Note:
-            - I've criticized it a lot, but
+            - I bashed AI generated code earlier but
             - Editors like Cursor are interesting
             - You can tell an LLM to do your job for you
-            - But it probably won't do it well
+            - But it probably won't do it well. Yet.
             ---
             ## Coding
 
@@ -306,28 +344,6 @@
             - Other editors are catching up
             - VS Code has Copilot
             - JetBrains has Junie
-            ---
-            ## What is an LLM?
-
-            A Large Language Model (LLM) is a type of AI that uses deep learning to understand and generate human language.
-
-            Note:
-            - Let's take a step back
-            - LLMs make all of this possible
-            - LLMs are AI models that understand and generate language
-            - They are trained on large corpuses of text
-            ---
-            ## What is an LLM?
-
-            - ChatGPT
-            - Claude
-            - Gemini
-
-            Note:
-            - Some examples of LLMs are
-            - ChatGPT from Open AI
-            - Claude from Anthropic
-            - Gemini from Google
             ---
             ## The LLM Client
 
@@ -352,9 +368,8 @@
             ![VS Code AI Prompt](images/vs-code-ai-prompt.png)
 
             Note:
-            - I mentioned it eatlier
             - VS Code also has an LLM client built in
-            - We'll use this going forward
+            - I'll use this later in the demo
             - Let's look at how it works under the hood
             ---
             ## The LLM Client
@@ -367,20 +382,17 @@
             ```
 
             Note:
-            - It takes a query
-            - Sends it to the LLM
-            - And returns the response
-            - Pretty simple
+            - Explain diagram
             ---
             ## The LLM Client
 
             ![VS Code Agent Select](images/vs-code-agent-select.png)
 
             Note:
-            - This often also means you can choose the LLM to query
+            - Often you can choose the LLM to query
             - LLMs are often referred to as Agents
             - But they are just a target LLM version
-            - Like Calude 3.5 or ChatGPT 4
+            - Like Calude 3.5 or GPT 4
             ---
             ## The LLM Client
 
@@ -405,7 +417,7 @@
 
             Note:
             - Alexa can play music from Spotify
-            - Siri can search the web
+            - Siri can send messages on your behalf
             - Can I teach ChatGPT to talk to a Rails Application?
             ---
             ## Model Context Protocol (MCP)
@@ -416,25 +428,20 @@
             - Yes, you can
             - And that's what I'd like to talk about today
             - Model Context Protocol (MCP) provides a standard way
-            - For LLM clients to extend the capabilities of LLMs
+            - For clients to extend the capabilities of LLMs
             ---
             ## Model Context Protocol (MCP)
 
             ```mermaid
             graph LR
-              Developer -- Chats --> Client
               Client <-- Registers --> MCPServer
-              Client -- Queries --> LLM
               Client -- Queries --> MCPServer
-              LLM -- Responds --> Client
               MCPServer -- Responds --> Client
             ```
 
             Note:
             - It works like this
-            - The Developer talks to the client
-            - The Client uses MCP to talk to multiple servers
-            - The Client also queries the LLM
+            - Explain diagram
             ---
             ## Model Context Protocol (MCP)
 
@@ -443,14 +450,14 @@
               Client ->> Server: Initialize Request
               activate Server
               Server -->> Client: Initialize Response
-              Client -->> Server: Initialized Notification
+              Server -->> Client: Initialized Notification
               deactivate Server
             ```
 
             Note:
-            - When the Client connects to a server
-            - The connection starts with a handshake
-            - That looks like this
+            - When registering a new MCP Server
+            - The client starts a handshake
+            - Explain diagram
             ---
             ## Model Context Protocol (MCP)
 
@@ -475,6 +482,7 @@
             - Requests, responses, and notifications
             - Are all sent as JSON RPC
             - This is what the initialize request looks like
+            - Explain JSON
             ---
             ## Model Context Protocol (MCP)
 
@@ -496,8 +504,7 @@
 
             Note:
             - The initialize response looks similar
-            - It tells the client what capabilities the server has
-            - And what version of the protocol it supports
+            - Explain JSON
             ---
             ## Model Context Protocol (MCP)
 
@@ -539,8 +546,9 @@
             ```
 
             Note:
-            - The client then might ask the server
-            - For a list of tools it has access to
+            - The client then usually asks the server
+            - For a list of tools it has
+            - Based on stated capabilities
             - Tools are basically remote functions
             ---
             ## Model Context Protocol (MCP)
@@ -548,7 +556,7 @@
             ```json
             {
               "jsonrpc": "2.0",
-              "id": 2,
+              "id": 1,
               "result": {
                 "tools": [
                   {
@@ -572,16 +580,62 @@
             ---
             ## Model Context Protocol (MCP)
 
+            ```mermaid
+            graph LR
+              Developer -- Chats --> Client
+              Client <-- Registered --> MCPServer
+              Client -- Queries with Tools --> LLM
+              LLM -- Responds --> Client
+            ```
+
+            Note:
+            - At this point the client knows
+            - What the server can do
+            - Explain diagram
+            ---
+            ## Model Context Protocol (MCP)
+
+            ```json
+            {
+              "model": "gpt-5",
+              "input": "Use the test tool."
+              "tools": [{
+                "type": "function",
+                "name": "test",
+                "description": "Test",
+                "parameters": {
+                  "type": "object",
+                  "properties": {
+                      "name": {
+                          "type": "string",
+                          "description": "Name"
+                      },
+                  },
+                  "required": ["name"],
+                  "additionalProperties": false
+                },
+                "strict": true
+              }]
+            }
+            ```
+
+            Note:
+            - And that would look like this
+            - Explain JSON
+            ---
+            ## Model Context Protocol (MCP)
+
             ```json
             {
               "jsonrpc": "2.0",
-              "id": 2,
+              "id": 1,
               "method": "tools/call",
               "params": { "name":"test", "arguments": { "name":"Gannon" } }
             }
             ```
 
             Note:
+            - If the LLM wishes
             - The client can then call a tool
             - By sending a tools/call request
             - With the name of the tool and arguments
@@ -591,11 +645,11 @@
             ```json
             {
               "jsonrpc": "2.0",
-              "id": 2,
+              "id": 1,
               "result": {
                 "content": [{
                   "type": "text",
-                  "text": "Hello from MCP, {name: \"Gannon\"}"
+                  "text": "Hello from MCP, Gannon"
                 }],
                 "isError": false
               }
@@ -626,8 +680,8 @@
 
             Note:
             - Clients also have capabilities too
-            - I'm focusing more on the server side
-            - So you can read more about these in the MCP spec
+            - I'm focusing more on MCP servers
+            - So you can read more about that in the MCP spec
             ---
             ## Model Context Protocol (MCP)
 
@@ -653,43 +707,17 @@
             - You can also use MCP servers through STDIO
             - Anything that you can send and receive JSON through
             ---
-            ## Model Context Protocol (MCP)
-
-            ```json
-            {
-              "model": "gpt-5",
-              "input": "Use the test tool."
-              "tools": [{
-                "type": "function",
-                "name": "test",
-                "description": "Test",
-                "parameters": {
-                  "type": "object",
-                  "properties": {
-                      "location": {
-                          "type": "string",
-                          "description": "Name"
-                      },
-                  },
-                  "required": ["name"],
-                  "additionalProperties": false
-                },
-                "strict": true
-              }]
-            }
-            ```
-
-            Note:
-            - When the client queries the LLM
-            - It includes a list of tools it has access to
-            - The LLM can the ndecide which to use
-            ---
             ## Demo
 
             (see example folder)
 
             Note:
             - Demo building a basic MCP server with VSCode and Ruby
+            - Build an app using Copilot
+            - Add fast-mcp, add a tool, and set it up
+            - Hook it up in VS Code
+            - Use it with Vs Code
+            - Show example app STDIO
             ---
             ## API Clients
 

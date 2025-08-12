@@ -10,9 +10,9 @@ Dir.chdir(root) do
 
   require_relative "../app"
 
-  module App
-    extend Mcp
+  app = Module.new do
+    extend App::Mcp
   end
 
-  App.server.start
+  app.server.start
 end

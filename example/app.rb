@@ -27,7 +27,7 @@ module App
         required(:name).filled(:string).description("Name of the person to greet.")
       end
 
-      def call(name)
+      def call(name:)
         "Hello from MCP, #{name}"
       end
     end

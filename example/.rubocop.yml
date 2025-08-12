@@ -1,0 +1,5 @@
+inherit_from:
+  - https://raw.githubusercontent.com/gmcgibbon/dotfiles/main/rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 3.4.1
