@@ -10,7 +10,8 @@ module App
     def server
       @server ||= begin
         server = FastMcp::Server.new(name: NAME, version: VERSION, logger:)
-        server.register_tool(Tool)
+        server.register_tool(GreetingTool)
+        server.register_resource(HighScoreResource)
         server
       end
     end
@@ -19,7 +20,7 @@ module App
       @logger ||= FastMcp::Logger.new
     end
 
-    class Tool < FastMcp::Tool
+    class GreetingTool < FastMcp::Tool
       tool_name "greeting"
       description "Greets the user given a name."
 
@@ -29,6 +30,16 @@ module App
 
       def call(name:)
         "Hello from MCP, #{name}"
+      end
+    end
+
+    class HighScoreResource < FastMcp::Resource
+      uri "myapp:///high_score"
+      resource_name "High Score"
+      mime_type "application/json"
+
+      def content
+        JSON.generate({ value: (5000..9999).to_a.sample })
       end
     end
   end
